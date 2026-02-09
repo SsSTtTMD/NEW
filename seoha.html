@@ -14,21 +14,14 @@
   color:#fff;
 }
 
-/* ================= 배경 (더 티나는 모션) ================= */
+/* ================= 배경 ================= */
 body{
   min-height:100vh;
   display:flex;
   justify-content:center;
   padding:60px 16px 120px;
 
-  background:linear-gradient(
-    140deg,
-    #00769D,
-    #004F9D,
-    #00769D,
-    #004F9D
-  );
-
+  background:linear-gradient(140deg,#00769D,#004F9D,#00769D,#004F9D);
   background-size:600% 600%;
   animation:bgmove 10s ease-in-out infinite;
 }
@@ -52,7 +45,7 @@ body{
 /* ================= 사진 ================= */
 .profile-img{
   width:100%;
-  border-radius:10px; /* 더 각지게 */
+  border-radius:10px;
   overflow:hidden;
   box-shadow:0 0 25px rgba(0,191,255,.4);
 }
@@ -70,7 +63,7 @@ body{
 
 .sub{
   color:#FFEFA3;
-  letter-spacing:3px; /* 일정 */
+  letter-spacing:3px;
   font-size:14px;
   margin-top:4px;
 }
@@ -91,39 +84,23 @@ body{
   width:100%;
   padding:16px 18px;
   border-radius:12px;
-
   background:linear-gradient(90deg,#00BFFF,#0080FF);
-
   display:flex;
   justify-content:space-between;
   align-items:center;
-
   font-weight:bold;
   cursor:pointer;
-
   transition:.2s;
   box-shadow:0 0 15px rgba(0,191,255,.4);
 }
 
-.btn:hover{ transform:scale(1.03); }
-.btn:active{ transform:scale(.97); }
+.btn + .btn{ margin-top:16px; }
 
 .star{
-  font-size:24px; /* 더 큼 */
-  animation:blink 2s infinite;
+  font-size:24px;
 }
 
-@keyframes blink{
-  0%,100%{opacity:.3;}
-  50%{opacity:1;}
-}
-
-/* 버튼 간격 통일 */
-.btn + .btn{
-  margin-top:16px;
-}
-
-/* ================= 프로필 패널 ================= */
+/* ================= 패널 ================= */
 .panel{
   width:100%;
   overflow:hidden;
@@ -131,34 +108,68 @@ body{
   transition:max-height .45s ease;
 }
 
-.profile-card{
+/* ===== 공통 카드 ===== */
+.info-card{
   margin-top:12px;
+  border-radius:14px;
+  overflow:hidden;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(2px);
+}
+
+/* ================= 프로필/기록 표 스타일 ================= */
+.info-grid{
+  display:grid;
+  grid-template-columns:110px 1fr;
+}
+
+.info-label{
+  background:#FFD700;
+  color:#000;
+  font-weight:bold;
+  padding:14px;
+  border-bottom:1px solid #ddd;
+}
+
+.info-value{
   background:#fff;
-  border-radius:12px;
-  padding:16px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
   color:#000;
+  padding:14px;
+  border-bottom:1px solid #eee;
+  line-height:1.6;
+  white-space:pre-line;
 }
 
-.row{
-  display:flex;
-  gap:8px;
-  align-items:flex-start;
-  font-size:14px;
+/* 상징 태그 */
+.tag{
+  display:inline-block;
+  background:#FFD700;
   color:#000;
-}
-
-/* 라벨을 NEW 태그 스타일 */
-.label{
-  background:linear-gradient(90deg,#00BFFF,#0080FF);
   padding:4px 10px;
   border-radius:8px;
   font-weight:bold;
-  color:#fff;
-  font-size:12px;
-  white-space:nowrap;
+  margin-right:6px;
+}
+
+/* ================= 인터뷰 ================= */
+.qa{
+  display:flex;
+  flex-direction:column;
+}
+
+.q{
+  background:#f2f2f2;
+  color:#000;
+  padding:14px;
+  font-weight:900;
+  border-bottom:1px solid #ddd;
+}
+
+.a{
+  background:#fff;
+  color:#000;
+  padding:14px;
+  border-bottom:1px solid #eee;
 }
 
 /* ================= 안내 ================= */
@@ -186,41 +197,109 @@ body{
 LEAD VOCAL | LEAD DANCER
 </div>
 
-<!-- 프로필 -->
-<div class="btn" onclick="togglePanel(this)">
-  ▎프로필
-  <span class="star">✦</span>
-</div>
+
+<!-- ================= 프로필 ================= -->
+<div class="btn" onclick="togglePanel(this)">▎프로필 <span class="star">✦</span></div>
 
 <div class="panel">
-  <div class="profile-card">
+  <div class="info-card info-grid">
 
-    <div class="row">
-      <div class="label">본명</div>
-      송서하 (宋誓夏, Song Seoha)
-    </div>
+    <div class="info-label">본명</div>
+    <div class="info-value">송서하 (宋誓夏, Song Seoha)</div>
 
-    <div class="row">
-      <div class="label">출생</div>
-      2003년 1월 3일 (23세)<br>
-      세종특별자치시
-    </div>
+    <div class="info-label">출생</div>
+    <div class="info-value">2003년 1월 3일 (23세)
+세종특별자치도</div>
 
-    <div class="row">
-      <div class="label">본관</div>
-      은진 송씨 (恩津 宋氏)
-    </div>
+    <div class="info-label">국적</div>
+    <div class="info-value">🇰🇷 대한민국</div>
 
-    <div class="row">
-      <div class="label">신체</div>
-      176cm
-    </div>
+    <div class="info-label">본관</div>
+    <div class="info-value">여산 송씨 (恩津 宋氏)</div>
+
+    <div class="info-label">신체</div>
+    <div class="info-value">176cm</div>
+
+    <div class="info-label">가족</div>
+    <div class="info-value">아버지, 어머니, 누나</div>
+
+    <div class="info-label">소속사</div>
+    <div class="info-value">ST엔터테인먼트</div>
+
+    <div class="info-label">소속 그룹</div>
+    <div class="info-value">NewBit</div>
+
+    <div class="info-label">포지션</div>
+    <div class="info-value"><b>리더</b>, 리드보컬, 리드댄서</div>
+
+    <div class="info-label">상징</div>
+    <div class="info-value"><span class="tag">노랑</span>🐝</div>
+
+    <div class="info-label">MBTI</div>
+    <div class="info-value">ESFJ</div>
 
   </div>
 </div>
 
-<div class="btn">▎인터뷰 <span class="star">✦</span></div>
-<div class="btn">▎개인 기록 <span class="star">✦</span></div>
+
+<!-- ================= 인터뷰 ================= -->
+<div class="btn" onclick="togglePanel(this)">▎인터뷰 <span class="star">✦</span></div>
+
+<div class="panel">
+  <div class="info-card qa">
+
+    <div class="q">Q1. 요즘 가장 자주 하는 생각은?</div>
+    <div class="a">컴백! 이번 앨범 잘 됐으면 좋겠다, 다들 고생한 만큼 결과가 있었으면</div>
+
+    <div class="q">Q2. 아무도 안 볼 때 나는 어떤 사람?</div>
+    <div class="a">그냥… 평범한 20대 남자? 생각보다 조용해요</div>
+
+    <div class="q">Q3. 스스로를 한 단어로 정의하면?</div>
+    <div class="a">뿌리</div>
+
+    <div class="q">Q4. 나를 제일 기쁘게 하는 것</div>
+    <div class="a">무대, 멤버들, 우리 BitE</div>
+
+    <div class="q">Q5. 나를 제일 불안하게 하는 것</div>
+    <div class="a">내가 리더로서 부족하다고 느껴질 때</div>
+
+    <div class="q">Q6. 꿈과 소중한 것 중 하나를 포기해야 한다면?</div>
+    <div class="a">소중한 것을 지키는 게 제 꿈입니다</div>
+
+    <div class="q">Q7. 나는 어떤 모습으로 기억되고 싶은지?</div>
+    <div class="a">언제나 믿을 수 있는 사람</div>
+
+  </div>
+</div>
+
+
+<!-- ================= 개인 기록 ================= -->
+<div class="btn" onclick="togglePanel(this)">▎개인 기록 <span class="star">✦</span></div>
+
+<div class="panel">
+  <div class="info-card info-grid">
+
+    <div class="info-label">가족 정보</div>
+    <div class="info-value">부친, 모친, 누나 (송제경/宋諸耿)</div>
+
+    <div class="info-label">식성</div>
+    <div class="info-value">좋아하는 음식: 육류, 어류
+싫어하는 음식: ×</div>
+
+    <div class="info-label">위버스</div>
+    <div class="info-value">닉네임: SEOHA
+게시 빈도: 多</div>
+
+    <div class="info-label">인스타 ID</div>
+    <div class="info-value">@song.s</div>
+
+    <div class="info-label">소견</div>
+    <div class="info-value">• 식사량 많습니다. 스스로 체중 조절
+• 아침잠 많은 편, 중요 일정 시 확인 요망</div>
+
+  </div>
+</div>
+
 
 <div class="notice">✦를 클릭하여 정보를 확인하세요</div>
 
