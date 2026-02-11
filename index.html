@@ -51,23 +51,30 @@ body{display:flex;justify-content:center;align-items:center;min-height:100vh;bac
 /* 글자 컨테이너 */
 .intro-text{
   margin-top:22px;
-  font-size:22px;
+  font-size:26px;
   letter-spacing:6px;
   white-space:nowrap;
+  position:relative;
 }
 
 /* 한 글자씩 */
 .intro-text span{
+  position:absolute;
+  left:50%;
+  top:0;
   opacity:0;
-  display:inline-block;
-  transform:translateX(-60px);
-  animation:letter 0.25s forwards;
+  transform:translateX(-50%) scale(0.5);
+  animation:spread 0.35s forwards;
 }
 
-@keyframes letter{
-  to{
+@keyframes spread{
+  0%{
+    opacity:0;
+    transform:translateX(-50%) scale(0.5);
+  }
+  100%{
     opacity:1;
-    transform:translateX(0);
+    transform:translateX(var(--offset)) scale(1);
   }
 }
   
@@ -86,26 +93,7 @@ body{display:flex;justify-content:center;align-items:center;min-height:100vh;bac
 </style>
 </head>
 <body>
-  <div id="intro">
-  <img src="images/ST.jpg" class="intro-logo">
-  <div class="intro-text">
-  <span style="animation-delay:0.60s">S</span>
-  <span style="animation-delay:0.61s">T</span>
-  <span style="animation-delay:0.62s">&nbsp;</span>
-  <span style="animation-delay:0.63s">E</span>
-  <span style="animation-delay:0.64s">N</span>
-  <span style="animation-delay:0.65s">T</span>
-  <span style="animation-delay:0.66s">E</span>
-  <span style="animation-delay:0.67s">R</span>
-  <span style="animation-delay:0.68s">T</span>
-  <span style="animation-delay:0.69s">A</span>
-  <span style="animation-delay:0.70s">I</span>
-  <span style="animation-delay:0.71s">N</span>
-  <span style="animation-delay:0.72s">M</span>
-  <span style="animation-delay:0.73s">E</span>
-  <span style="animation-delay:0.74s">N</span>
-  <span style="animation-delay:0.75s">T</span>
-</div>
+  <div class="intro-text"></div>
 </div>
 <div class="container">
   <div class="logo-wrap">
@@ -145,6 +133,25 @@ btnCompany.onclick=()=>{subCompany.classList.toggle('show');}
 const btnArtist=document.getElementById('btnArtist');
 const subArtist=document.getElementById('subArtist');
 btnArtist.onclick=()=>{subArtist.classList.toggle('show');}
+const text = "ST ENTERTAINMENT";
+const container = document.querySelector(".intro-text");
+
+container.innerHTML = "";
+
+const total = text.length;
+
+[...text].forEach((letter, i) => {
+  const span = document.createElement("span");
+  span.textContent = letter;
+
+  const center = (total - 1) / 2;
+  const offset = (i - center) * 18; // 간격 조절 가능
+
+  span.style.setProperty("--offset", offset + "px");
+  span.style.animationDelay = 0.6 + i * 0.03 + "s";
+
+  container.appendChild(span);
+});
 </script>
 </body>
 </html>
