@@ -6,12 +6,7 @@
 <title>ABOUT ST</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family: Arial, sans-serif;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif;}
 
 body{
   min-height:100vh;
@@ -33,100 +28,172 @@ body{
   margin:0 auto;
 }
 
-/* 로고 */
+/* ☰ 버튼 */
+.menu-toggle{
+  position:fixed;
+  top:20px;
+  right:22px;
+  font-size:28px;
+  cursor:pointer;
+  z-index:1001;
+  transition:.3s;
+}
+
+/* 오른쪽 슬라이드 패널 */
+.side-menu{
+  position:fixed;
+  top:0;
+  right:0;
+  width:50%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(6px);
+  transform:translateX(100%);
+  transition:.35s ease;
+  padding:90px 30px;
+  z-index:1000;
+}
+
+.side-menu.open{
+  transform:translateX(0);
+}
+
+.menu-title{
+  font-size:18px;
+  letter-spacing:3px;
+  margin-bottom:12px;
+  cursor:pointer;
+}
+
+.sub{
+  margin-left:6px;
+  font-size:14px;
+  opacity:.8;
+  margin-bottom:8px;
+  cursor:pointer;
+}
+
 .logo{
-  display:flex;
-  justify-content:center;
-  margin-bottom:50px;
+  display:block;
+  margin:0 auto 26px;
+  width:140px;
+  filter:drop-shadow(0 0 14px rgba(255,255,255,0.6));
 }
 
-.logo img{
-  width:200px;
-  filter:drop-shadow(0 0 20px rgba(255,255,255,0.7));
-}
-
-/* 구분선 */
-.line{
-  width:100%;
+/* 굵은 구분선 */
+.hr-strong{
+  border:none;
   height:2px;
-  background:rgba(255,255,255,0.6);
-  margin:40px 0;
+  background:rgba(255,255,255,0.5);
+  margin:28px 0 32px;
 }
 
-/* 제목 */
-h2{
+/* 기본 구분선 */
+.hr{
+  border:none;
+  height:1px;
+  background:rgba(255,255,255,0.3);
+  margin:28px 0;
+}
+
+h1{
   font-size:28px;
   letter-spacing:4px;
-  margin-bottom:20px;
-  text-shadow:0 0 10px rgba(255,255,255,0.5);
+  margin-bottom:18px;
+}
+
+p{
+  line-height:1.8;
+  font-size:14px;
+  opacity:.9;
 }
 
 .section-title{
   font-size:20px;
   letter-spacing:4px;
-  margin:40px 0 14px;
-  text-shadow:0 0 8px rgba(255,255,255,0.4);
+  margin:34px 0 12px;
 }
 
-p{
+.final{
+  margin-top:30px;
   line-height:1.9;
-  font-size:15px;
-  color:rgba(255,255,255,0.85);
-}
-
-/* 하단 여백 */
-.bottom-space{
-  margin-top:40px;
 }
 </style>
 </head>
-
 <body>
+
+<div class="menu-toggle" id="toggle">☰</div>
+
+<div class="side-menu" id="menu">
+  <div class="menu-title" onclick="toggleCompany()">COMPANY</div>
+  <div id="companySub" style="display:none">
+    <div class="sub" onclick="location.href='aboutst.html'">ABOUT ST</div>
+  </div>
+
+  <div class="menu-title" onclick="toggleArtist()">ARTIST</div>
+  <div id="artistSub" style="display:none">
+    <div class="sub" onclick="location.href='infof.html'">IN FRONT OF</div>
+    <div class="sub" onclick="location.href='newbit.html'">NewBit</div>
+  </div>
+</div>
 
 <div class="container">
 
-  <div class="logo">
-    <img src="images/ST.jpg" alt="ST Logo">
-  </div>
+<img src="images/ST.jpg" class="logo">
 
-  <h2>The Originality</h2>
-  <p>
-    ST엔터테인먼트는 설립 이래 독보적인 원석을 발굴하고, 그들이 지닌 고유한 예술적 색채를 완성도 있게 구현해 내는 데 매진해 왔습니다. 
-    아티스트가 가진 원형의 매력이 글로벌 무대에서 가장 눈부시게 빛날 수 있도록 체계적인 매니지먼트 솔루션을 제공합니다.
-  </p>
+<hr class="hr-strong">
 
-  <div class="line"></div>
+<h1>The Originality</h1>
 
-  <div class="section-title">▎SELECTIVE</div>
-  <p>
-    ST엔터테인먼트는 타고난 감각과 압도적인 역량의 정점을 지향합니다. 
-    대중을 매료시키는 아우라와 아티스트로서 갖춰야 할 필수적인 자질을 입체적으로 분석하여 시대의 아이콘이 될 잠재력을 발굴합니다.
-  </p>
+<p>
+ST엔터테인먼트는 설립 이래 독보적인 원석을 발굴하고, 그들이 지닌 고유한 예술적 색채를 완성도 있게 구현해 내는 데 매진해 왔습니다. 아티스트가 가진 원형의 매력이 글로벌 무대에서 가장 눈부시게 빛날 수 있도록 체계적인 매니지먼트 솔루션을 제공합니다.
+</p>
 
-  <div class="section-title">▎INTENSIVE</div>
-  <p>
-    선발된 인재가 독보적인 아티스트로 거듭나기 위해 ST만의 집약적인 트레이닝 시스템을 가동합니다. 
-    치열한 노력과 열정이 성과로 증명되는 과정을 전폭적으로 지원하고, 인재 개개인이 가진 역량의 밀도를 높여 최상의 퍼포먼스를 구현할 수 있는 기반을 다집니다.
-  </p>
+<hr class="hr">
 
-  <div class="section-title">▎CREATIVE</div>
-  <p>
-    고정된 틀에 갇히지 않는 창의적 진화를 추구합니다. 
-    아티스트 고유의 정체성을 바탕으로 새로운 장르와 문화를 개척하여 글로벌 엔터테인먼트 시장에서 대체 불가능한 존재감을 확립하는 것이 ST엔터테인먼트가 지향하는 최종적인 지향점입니다.
-  </p>
+<div class="section-title">▎SELECTIVE</div>
+<p>
+ST엔터테인먼트는 타고난 감각과 압도적인 역량의 정점을 지향합니다. 대중을 매료시키는 아우라와 아티스트로서 갖춰야 할 필수적인 자질을 입체적으로 분석하여 시대의 아이콘이 될 잠재력을 발굴합니다.
+</p>
 
-  <div class="line"></div>
+<div class="section-title">▎INTENSIVE</div>
+<p>
+선발된 인재가 독보적인 아티스트로 거듭나기 위해 ST만의 집약적인 트레이닝 시스템을 가동합니다. 치열한 노력과 열정이 성과로 증명되는 과정을 전폭적으로 지원하고, 인재 개개인이 가진 역량의 밀도를 높여 최상의 퍼포먼스를 구현할 수 있는 기반을 다집니다.
+</p>
 
-  <p class="bottom-space">
-    ST엔터테인먼트는 신뢰와 전문성을 바탕으로 K-POP의 새로운 표준을 세워가겠습니다.
-  </p>
+<div class="section-title">▎CREATIVE</div>
+<p>
+고정된 틀에 갇히지 않는 창의적 진화를 추구합니다. 아티스트 고유의 정체성을 바탕으로 새로운 장르와 문화를 개척하여 글로벌 엔터테인먼트 시장에서 대체 불가능한 존재감을 확립하는 것이 ST엔터테인먼트가 지향하는 최종적인 지향점입니다.
+</p>
 
-  <p style="margin-top:20px;">
-    아티스트와 함께 호흡하며 지속 가능한 성장을 도모하는 ST엔터테인먼트는 투명한 시스템과 고도화된 프로듀싱 역량을 결합하여 전 세계 팬들에게 영감을 주는 콘텐츠를 선보입니다. 
-    업계의 리더로서 책임감 있는 경영을 실천하며 엔터테인먼트 산업의 미래를 설계해 나가겠습니다.
-  </p>
+<hr class="hr">
+
+<p class="final">
+ST엔터테인먼트는 신뢰와 전문성을 바탕으로 K-POP의 새로운 표준을 세워가겠습니다.<br><br>
+아티스트와 함께 호흡하며 지속 가능한 성장을 도모하는 ST엔터테인먼트는 투명한 시스템과 고도화된 프로듀싱 역량을 결합하여 전 세계 팬들에게 영감을 주는 콘텐츠를 선보입니다. 업계의 리더로서 책임감 있는 경영을 실천하며 엔터테인먼트 산업의 미래를 설계해 나가겠습니다.
+</p>
 
 </div>
+
+<script>
+const toggle=document.getElementById("toggle");
+const menu=document.getElementById("menu");
+
+toggle.onclick=()=>{
+  menu.classList.toggle("open");
+  toggle.textContent = menu.classList.contains("open") ? "✕" : "☰";
+};
+
+function toggleCompany(){
+  const s=document.getElementById("companySub");
+  s.style.display = s.style.display==="block"?"none":"block";
+}
+
+function toggleArtist(){
+  const s=document.getElementById("artistSub");
+  s.style.display = s.style.display==="block"?"none":"block";
+}
+</script>
 
 </body>
 </html>
